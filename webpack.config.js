@@ -1,9 +1,10 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: './src/js/index.js',
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist')
@@ -13,7 +14,8 @@ module.exports = {
     contentBase: './dist'
   },
   plugins: [
-    new HtmlWebpackPlugin(),
+    new CleanWebpackPlugin(),
+    new Dotenv(),
     new HtmlWebpackPlugin({
       title: 'Template Repo',
       template: './src/index.html',

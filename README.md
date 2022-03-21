@@ -1,8 +1,8 @@
-# Template Repo
+# Cryptocurrency Analytics App
 
-#### This is a Template for a web environment
+#### This app is using the Nomics Cryptocurrency & Bitcoin API.
 
-#### By Rosie Gardner
+#### By Rosie Gardner, Deya Card, & Rob Sameh
 
 ## Technologies Used
 
@@ -18,6 +18,7 @@
 * Open VScode.
 * Run $ npm install
 * Run $ npm build
+* Run $ npm run start
 
 ## Known Bugs
 
@@ -27,8 +28,10 @@
 
 MIT
 
-Copyright (c) 2022 Rosie Gardner
+Copyright (c) 2022 Rosie Gardner, Deya Card, & Rob Sameh
 
 ## Contact Information
 
-* Email: rosiegardner78@gmail.com
+* Email: Rosie Gardner <rosiegardner78@gmail.com>
+* Email: Deya Card <thedeyacard@gmail.com>
+* Email: Rob Sameh <robsameh@gmail.com>

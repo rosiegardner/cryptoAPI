@@ -14,32 +14,37 @@ function clearFields() {
 
 //getElements is our UI to call for a response from the API
 function getElements(response) {
-  console.log(response);
-  if(response.id) {
-    $('.showCrypto').text(`The Crypto in ${response.id} is ${response.id.crypto}`);
-    $('.showCurrency').text(`The current value of ${response.id.crypto} is ${response.id.currency}`);
-  } else {
-    $('.showErrors').text(`There was an error: ${response.message}`);
+  console.log(response[24])
+  for (let i = 0; i < response.length; i++) {
+    if(response[i]) {
+      
+      $('.showCrypto').append(`The Crypto in ${response[i].name} is ${response[i].currency}`);
+      $('.showCrypto').append('<br></br>');
+      $('.showCurrency').append(`The current value of ${response[i].name} is ${response[i].price}`);
+      $('.showCurrency').append('<br></br>');
+    } else {
+      $('.showErrors').text(`There was an error: ${response.message}`);
+    }
   }
 }
 
 //async makeApiCall(crypto) calls on our static method in c-service.js
-async function makeApiCall(crypto) {
-  const response = await Cryptocurrency.currencyPop(crypto);
-  console.log(response);
-  getElements(response);
-}
+// async function makeApiCall(crypto) {
+//   const response = await Cryptocurrency.currencyPop(crypto);
+//   // console.log(response[0]);
+//   getElements(response);
+// }
 
 //Retrieving our data.
 $(document).ready(function() {
   $('#cryptoCurrency').click(function() {
     let crypto = $('#crypto').val();
     clearFields();
-    makeApiCall(crypto);
-    // Cryptocurrency.currencyPop(crypto)
-    //   .then(function(response) {
-    //     getElements(response);
-    //   });
+    // makeApiCall(crypto);
+    Cryptocurrency.currencyPop(crypto)
+      .then(function(response) {
+        getElements(response);
+      });
   });
 });
 // https://api.nomics.com/v1/currencies/ticker?key=" + process.env.NOMICS_API_KEY + "&per-page=100&page=1

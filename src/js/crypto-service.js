@@ -1,10 +1,9 @@
 export default class Cryptocurrency {
   static async currencyPop(crypto) {
     try {
-      console.log(crypto);
       const response = await fetch(`https://api.nomics.com/v1/currencies/ticker?key=${process.env.NOMICS_API_KEY}&ids=${crypto}&per-page=25`)
-      .then(response => response.json())
-      .then(data => console.log(data))
+      // .then(response => response.json()) <--a problem
+      // .then(data => console.log(data)) <--a problem
       if (!response.ok) {
         throw Error (response.statusText);
       }

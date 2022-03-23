@@ -6,18 +6,22 @@
 <body>
   <div class="container">
     <h1>Cryptocurrency Analytics</h1>
+    <label for="currency">Select Currency:</label>
+    <select class="form-control" id="currency">
+      <option value="USD">USD</option>
+      <option value="EUR">EUR</option>
+      <option value="CNY">CNY</option>
+      <option value="JPY">JPY</option>
+      <option value="SEK">SEK</option>
+    </select>
     <label for="crypto">Enter Crypto:</label>
     <input id="crypto" type="text">
-    <button class="btn-success" id="cryptoCurrency" type="click">Show Ranking</button>
+    <button class="btn-success" id="cryptoCurrency" type="click">Show Value</button>
     <div class="showErrors"></div>
     <div class="showCrypto"></div>
     <div class="showCurrency"></div>
   </div>
-  <!-- NOTES FOR TOMORROW:
-    1. Display API results on page
-    2. explore with different outputs and query's from nomics API
-
- -->
+  
 
 
 </body>

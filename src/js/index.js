@@ -6,10 +6,10 @@ import Cryptocurrency from './crypto-service.js'
 
 //Input from browser
 function clearFields() {
-  $('#crypto').val("");
+  // $('#crypto').val("");
+  // $('#currency').val("");
   $('.showErrors').text("");
   $('.showCrypto').text("");
-  $('.showCurrency').text("");
 }
 
 //getElements is our UI to call for a response from the API
@@ -18,10 +18,8 @@ function getElements(response) {
   for (let i = 0; i < response.length; i++) {
     if(response[i]) {
       
-      $('.showCrypto').append(`The Crypto in ${response[i].name} is ${response[i].currency}`);
+      $('.showCrypto').append(`The Crypto ${response[i].name} - ${response[i].currency} holds the current value of ${response[i].price}`);
       $('.showCrypto').append('<br></br>');
-      $('.showCurrency').append(`The current value of ${response[i].name} is ${response[i].price}`);
-      $('.showCurrency').append('<br></br>');
     } else {
       $('.showErrors').text(`There was an error: ${response.message}`);
     }
@@ -39,9 +37,10 @@ function getElements(response) {
 $(document).ready(function() {
   $('#cryptoCurrency').click(function() {
     let crypto = $('#crypto').val();
+    let currency = $('#currency').val();
     clearFields();
     // makeApiCall(crypto);
-    Cryptocurrency.currencyPop(crypto)
+    Cryptocurrency.currencyPop(crypto, currency)
       .then(function(response) {
         getElements(response);
       });

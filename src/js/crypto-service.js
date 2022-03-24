@@ -11,8 +11,9 @@ export default class Cryptocurrency {
     } catch(error) {
       return error.message;
     }
-  }
+  } 
 }
+// &interval=${amount}
 
 //A website that's returning an API that not currently being rendered to our HTML
 

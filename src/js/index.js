@@ -14,14 +14,15 @@ function clearFields() {
 }
 
 //getElements is our UI to call for a response from the API
-function getElements(response) {
-  console.log(response[0]["1d"].volume);
+function getElements(response, amountEntered) {
+  // console.log(response);
   for (let i = 0; i < response.length; i++) {
     if(response[i]) {
       
-      $('.showCrypto').append(`The Crypto ${response[i].name} - ${response[i].currency} holds the current value of ${response[i].price}`);
+      $('.showCrypto').append(`The Crypto ${response[i].name} - ${response[i].currency} holds the current value of ${response[i].price * amountEntered}`);
       $('.showCrypto').append('<br></br>');
-      // $('.showAmount').append(`The amount entered is equal to ${response[i].price_change_pct} in ${response[i].name}`);
+      $('.showAmount').append(`The amount entered is equal to ${response[i]["1d"].price_change_pct * amountEntered} in ${response[i].name}`);
+      $('.showAmount').append('<br></br>');
     } else {
       $('.showErrors').text(`There was an error: ${response.message}`);
     }
@@ -40,12 +41,13 @@ $(document).ready(function() {
   $('#cryptoCurrency').click(function() {
     let crypto = $('#crypto').val();
     let currency = $('#currency').val();
-    // let amount = $('#amount').val();
+    let amount = $('#amount').val();
     clearFields();
     // makeApiCall(crypto);
-    Cryptocurrency.currencyPop(crypto, currency) //, amount
+    Cryptocurrency.currencyPop(crypto, currency, amount) 
       .then(function(response) {
-        getElements(response);
+        console.log(response)
+        getElements(response, amount);
       });
   });
 }); 

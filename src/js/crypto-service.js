@@ -1,7 +1,9 @@
 export default class Cryptocurrency {
-  static async currencyPop(crypto, currency) {
+  static async currencyPop(crypto, currency, amount) {
     try {
-      const response = await fetch(`https://api.nomics.com/v1/currencies/ticker?key=${process.env.NOMICS_API_KEY}&ids=${crypto}&per-page=25&convert=${currency}`)
+      // const postmanUrl = "https://api.nomics.com/v1/currencies/ticker?key=5912500731ce8e577be60dc28d945451ed2616ae&per-page=25&convert=SEK&interval=1d"
+      const response = await fetch(`https://api.nomics.com/v1/currencies/ticker?key=${process.env.NOMICS_API_KEY}&ids=${crypto}&per-page=25&convert=${currency}&interval=${amount}`)
+      // const response = await fetch(postmanUrl)
       // .then(response => response.json()) <--a problem
       // .then(data => console.log(data)) <--a problem
       if (!response.ok) {
@@ -13,7 +15,8 @@ export default class Cryptocurrency {
     }
   } 
 }
-// &interval=${amount}
+
+// https://api.nomics.com/v1/currencies/ticker?key=5912500731ce8e577be60dc28d945451ed2616ae&per-page=25&convert=SEK&interval=1d
 
 //A website that's returning an API that not currently being rendered to our HTML
 
